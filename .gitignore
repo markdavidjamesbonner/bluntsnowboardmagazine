@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+.env*.local
+
+# 1GB+ of source PDFs: never commit, host separately
+blunt_magazine_complete_1_22/
+
+# ~800MB of rendered page images: hosted on Cloudflare Pages, regenerate with `npm run flipbook`
+flipbook_pages/

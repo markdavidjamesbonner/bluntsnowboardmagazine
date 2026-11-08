@@ -1,0 +1,90 @@
+{
+  "issue-01": {
+    "pageCount": 52,
+    "aspect": 0.8036
+  },
+  "issue-02": {
+    "pageCount": 52,
+    "aspect": 1.3083
+  },
+  "issue-03-1": {
+    "pageCount": 77,
+    "aspect": 0.7646
+  },
+  "issue-03-2": {
+    "pageCount": 76,
+    "aspect": 0.7669
+  },
+  "issue-03-3": {
+    "pageCount": 90,
+    "aspect": 0.774
+  },
+  "issue-03-4": {
+    "pageCount": 92,
+    "aspect": 0.7712
+  },
+  "issue-04": {
+    "pageCount": 98,
+    "aspect": 0.7606
+  },
+  "issue-08": {
+    "pageCount": 98,
+    "aspect": 0.7794
+  },
+  "issue-09": {
+    "pageCount": 98,
+    "aspect": 0.7643
+  },
+  "issue-10": {
+    "pageCount": 98,
+    "aspect": 0.7529
+  },
+  "issue-11": {
+    "pageCount": 100,
+    "aspect": 0.773
+  },
+  "issue-12": {
+    "pageCount": 100,
+    "aspect": 0.7643
+  },
+  "issue-13": {
+    "pageCount": 98,
+    "aspect": 0.7739
+  },
+  "issue-14": {
+    "pageCount": 100,
+    "aspect": 0.7643
+  },
+  "issue-15": {
+    "pageCount": 100,
+    "aspect": 0.7464
+  },
+  "issue-16": {
+    "pageCount": 100,
+    "aspect": 0.7328
+  },
+  "issue-17": {
+    "pageCount": 100,
+    "aspect": 0.736
+  },
+  "issue-18": {
+    "pageCount": 98,
+    "aspect": 0.7545
+  },
+  "issue-19": {
+    "pageCount": 100,
+    "aspect": 0.7562
+  },
+  "issue-20": {
+    "pageCount": 100,
+    "aspect": 0.75
+  },
+  "issue-21": {
+    "pageCount": 99,
+    "aspect": 0.7403
+  },
+  "issue-22": {
+    "pageCount": 100,
+    "aspect": 0.7734
+  }
+}

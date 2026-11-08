@@ -1,0 +1,43 @@
+:root {
+  --ground: #f2f1ed;
+  --ink: #161514;
+  --ink-soft: #4a4843;
+  --neon-pink: #ff10f0;
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
+  color-scheme: light;
+}
+
+/* Wide-gamut screens (most Macs/iPhones) can show a pink beyond what sRGB hex allows. */
+@supports (color: color(display-p3 1 0 1)) {
+  :root {
+    --neon-pink: color(display-p3 1 0 0.9);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
