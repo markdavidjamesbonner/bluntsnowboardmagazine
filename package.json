@@ -9,6 +9,8 @@
     "preview": "vite preview",
     "covers": "node scripts/extract_covers.mjs",
     "flipbook": "node scripts/render_flipbook_pages.mjs",
+    "publish:site": "npm run build && rsync -a --delete --exclude .DS_Store dist/ ../../../../wet_sandwich/wetsandwich_2026/public/blunt/",
+    "deploy:flipbook": "cp deploy/flipbook_headers flipbook_pages/_headers && wrangler pages deploy flipbook_pages --project-name blunt-flipbook --branch main --commit-dirty=true",
     "test": "node --test"
   },
   "dependencies": {
@@ -20,6 +22,7 @@
     "@napi-rs/canvas": "^1.1.0",
     "@vitejs/plugin-vue": "^6.0.10",
     "pdfjs-dist": "^6.5.438",
-    "vite": "^8.3.6"
+    "vite": "^8.3.6",
+    "wrangler": "^4.158.0"
   }
 }

@@ -20,7 +20,7 @@
 
 ## Current facts (verified Nov 8, 2026)
 
-- `npm run flipbook` is complete: 22 issues, 2,013 pages + 2,013 thumbs, manifest matches disk, no file > 25 MiB.
+- `npm run flipbook` is complete: 22 issues, 2,026 pages + 2,026 thumbs, manifest matches disk, no file > 25 MiB.
 - Netlify 301s `/folder` → `/folder/`, so `base: './'` resolves correctly at `/blunt/`.
 - Netlify's catch-all `/* → /index.html 200` rewrite is non-forced, so real files under `/blunt/` take precedence.
 
@@ -116,7 +116,7 @@ Run: `npx wrangler login` then `npx wrangler pages project create blunt-flipbook
 - [ ] **Step 5: Deploy**
 
 Run: `npm run deploy:flipbook`
-Expected: ~4,026 files uploaded; output ends with a `https://….blunt-flipbook.pages.dev` URL.
+Expected: 4,052 files uploaded; output ends with a `https://….blunt-flipbook.pages.dev` URL.
 
 - [ ] **Step 6: Verify hosting and headers**
 
