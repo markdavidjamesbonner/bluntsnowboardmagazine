@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { getCalendarPhase, getTorontoDate, parseDateOverride } from './calendarPhase.js';
+import { getCalendarPhase, getTorontoDate, parseDateOverride, parseIsoDate } from './calendarPhase.js';
 
 const YEAR = 2026;
 
@@ -30,4 +30,10 @@ test('date override parses strict YYYY-MM-DD only', () => {
   assert.deepEqual(parseDateOverride('?date=2026-12-14'), { year: 2026, month: 12, day: 14 });
   assert.equal(parseDateOverride('?date=12-14'), null);
   assert.equal(parseDateOverride(''), null);
+});
+
+test('ISO dates parse strict YYYY-MM-DD only', () => {
+  assert.deepEqual(parseIsoDate('2026-12-14'), { year: 2026, month: 12, day: 14 });
+  assert.equal(parseIsoDate('2026-12-14T00:00'), null);
+  assert.equal(parseIsoDate(undefined), null);
 });

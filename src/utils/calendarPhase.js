@@ -30,11 +30,15 @@ export function getCalendarPhase(date, calendarYear) {
   return { phase: 'after', unlockedThroughDay: ADVENT_LAST_DAY };
 }
 
-// Dev-only "?date=YYYY-MM-DD" so every phase can be previewed without touching the clock.
-export function parseDateOverride(search) {
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(new URLSearchParams(search).get('date') ?? '');
+export function parseIsoDate(text) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text ?? '');
   if (!match) {
     return null;
   }
   return { year: Number(match[1]), month: Number(match[2]), day: Number(match[3]) };
+}
+
+// Dev-only "?date=YYYY-MM-DD" so every phase can be previewed without touching the clock.
+export function parseDateOverride(search) {
+  return parseIsoDate(new URLSearchParams(search).get('date'));
 }
