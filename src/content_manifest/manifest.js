@@ -27,6 +27,7 @@ export const ENTRIES = ISSUES.map((issue, index) => ({
   day: ISSUE_DAYS[index],
   id: issue.id,
   title: `Blunt ${issue.title}`,
+  number: issue.title.replace(/^Volume /, ''),
   ornamentTexture: assetUrl(`content/issues/${issue.id}/ornament.jpg`),
   flipbook: flipbookFor(issue),
 }));

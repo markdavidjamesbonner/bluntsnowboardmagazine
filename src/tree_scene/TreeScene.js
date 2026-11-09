@@ -35,10 +35,11 @@ const TAP_MAX_DURATION_MS = 600;
 const AUTO_ROTATE_RESUME_DELAY_S = 1.6;
 
 export class TreeScene {
-  constructor(container, { entries, onOpen, onLockedTap }) {
+  constructor(container, { entries, onOpen, onLockedTap, onHover }) {
     this.container = container;
     this.onOpen = onOpen;
     this.onLockedTap = onLockedTap;
+    this.onHover = onHover;
     this.timer = new Timer();
 
     const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
@@ -113,6 +114,7 @@ export class TreeScene {
     this.lastInteractionEndedAt = -Infinity;
     this.controls.addEventListener('start', () => {
       this.isInteracting = true;
+      this.clearHover();
     });
     this.controls.addEventListener('end', () => {
       this.isInteracting = false;
@@ -267,14 +269,24 @@ export class TreeScene {
       this.hoveredOrnament = hovered;
       this.renderer.domElement.style.cursor = hovered ? 'pointer' : '';
     }
+    if (hovered) {
+      this.onHover(hovered.entry, { x: event.clientX, y: event.clientY });
+    } else {
+      this.onHover(null);
+    }
   }
 
   handlePointerLeave() {
+    this.clearHover();
+  }
+
+  clearHover() {
     if (this.hoveredOrnament) {
       this.hoveredOrnament.isHovered = false;
       this.hoveredOrnament = null;
     }
     this.renderer.domElement.style.cursor = '';
+    this.onHover(null);
   }
 
   dispose() {

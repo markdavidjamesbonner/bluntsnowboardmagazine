@@ -8,7 +8,7 @@ const props = defineProps({
   unlockedThroughDay: { type: Number, required: true },
   isPaused: { type: Boolean, default: false },
 });
-const emit = defineEmits(['open', 'locked', 'unavailable']);
+const emit = defineEmits(['open', 'locked', 'hover', 'unavailable']);
 
 const containerRef = ref(null);
 let treeScene = null;
@@ -19,6 +19,7 @@ onMounted(() => {
       entries: props.entries,
       onOpen: (entry) => emit('open', entry),
       onLockedTap: (entry, point) => emit('locked', entry, point),
+      onHover: (entry, point) => emit('hover', entry, point),
     });
     treeScene.setUnlockedThroughDay(props.unlockedThroughDay);
     treeScene.setPaused(props.isPaused);

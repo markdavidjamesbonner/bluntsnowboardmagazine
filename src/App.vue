@@ -2,8 +2,8 @@
 import { computed, ref, watch } from 'vue';
 
 import FlipbookViewer from './components/FlipbookViewer.vue';
-import NotYetCue from './components/NotYetCue.vue';
 import TreeCanvas from './components/TreeCanvas.vue';
+import TreeCue from './components/TreeCue.vue';
 import { useCalendarPhase } from './composables/useCalendarPhase.js';
 import { useFlipbookRoute } from './composables/useFlipbookRoute.js';
 import { CALENDAR_YEAR, ENTRIES } from './content_manifest/manifest.js';
@@ -15,6 +15,7 @@ const { phase, unlockedThroughDay } = useCalendarPhase(CALENDAR_YEAR);
 const masthead = computed(() => getMastheadCopy(phase.value, unlockedThroughDay.value));
 
 const notYetCue = ref(null);
+const hoverCue = ref(null);
 const isSceneUnavailable = ref(false);
 let cueId = 0;
 
@@ -56,6 +57,10 @@ function showNotYet(_entry, point) {
     }
   }, NOT_YET_CUE_MS);
 }
+
+function showHover(entry, point) {
+  hoverCue.value = entry ? { text: entry.number, ...point } : null;
+}
 </script>
 
 <template>
@@ -65,6 +70,7 @@ function showNotYet(_entry, point) {
     :is-paused="Boolean(activeEntry)"
     @open="openEntry"
     @locked="showNotYet"
+    @hover="showHover"
     @unavailable="isSceneUnavailable = true"
   />
 
@@ -85,7 +91,8 @@ function showNotYet(_entry, point) {
     </ul>
   </nav>
 
-  <NotYetCue :cue="notYetCue" />
+  <TreeCue v-if="notYetCue" :key="notYetCue.id" text="not yet" :x="notYetCue.x" :y="notYetCue.y" is-fading />
+  <TreeCue v-else-if="hoverCue && !activeEntry" :text="hoverCue.text" :x="hoverCue.x" :y="hoverCue.y" />
   <FlipbookViewer v-if="activeEntry" :key="activeEntry.id" :entry="activeEntry" @close="closeIssue" />
 </template>
 
